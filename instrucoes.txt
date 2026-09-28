@@ -1,0 +1,47 @@
+INSTRUÇÕES DE COMPILAÇÃO E EXECUÇÃO
+Sistema de Cinema - Fase 1 (Banco de Dados Relacional)
+
+
+REQUISITOS
+
+- Java JDK 17 ou superior instalado (testado com Java 25).
+- Não é necessário instalar nenhum servidor de banco de dados: o projeto usa
+  SQLite.
+- O driver JDBC do SQLite já está incluído em lib/sqlite-jdbc-3.46.1.3.jar
+
+ESTRUTURA DE PASTAS
+
+banco/         -> schema.sql (DDL), dados.sql (INSERTs) e cinema.db (banco já
+                   criado e com dados - arquivo de backup do banco de dados)
+src/           -> código-fonte Java (pacote cinema)
+lib/           -> driver JDBC do SQLite
+
+COMO COMPILAR
+
+A partir da pasta raiz do projeto (onde está esta instrução), execute:
+
+    javac -cp "lib/sqlite-jdbc-3.46.1.3.jar" -d bin $(find src -name "*.java")
+
+(No Windows, no PowerShell, use:
+    javac -cp "lib\sqlite-jdbc-3.46.1.3.jar" -d bin (Get-ChildItem -Recurse src\*.java | % { $_.FullName })
+)
+
+Isso vai gerar as classes compiladas dentro da pasta bin/.
+
+COMO EXECUTAR A APLICAÇÃO
+
+Ainda a partir da pasta raiz do projeto:
+
+    java -cp "bin:lib/sqlite-jdbc-3.46.1.3.jar" cinema.Main
+
+(No Windows, troque o ":" por ";":
+    java -cp "bin;lib\sqlite-jdbc-3.46.1.3.jar" cinema.Main
+)
+
+O menu principal em modo texto será exibido no terminal.
+
+
+OBSERVAÇÃO
+
+Ao rodar os comandos acima pode aparecer um "WARNING" do Java sobre acesso a
+método nativo (System::load) usado pelo driver do SQLite, esse aviso não impede a execução do programa.
