@@ -1,4 +1,4 @@
-# Trabalho de Banco de Dados — Fase 1
+# Trabalho de Banco de Dados, primeira fase (Aline e Geisela)
 ## Sistema de Gerenciamento de Cinema
 
 **Domínio de informação:** Cinema (rede/sala de exibição de filmes)
